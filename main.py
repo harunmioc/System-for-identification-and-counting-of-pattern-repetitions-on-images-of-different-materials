@@ -93,7 +93,7 @@ print(f"Model je inicijaliziran i premješten na: {device}")
 
 # --- 4. Trening Modela ---
 print("\nPokrećem trening modela...")
-num_epochs = 20 # Možeš prilagoditi broj epoha
+num_epochs = 25 # Možeš prilagoditi broj epoha
 train_losses, val_losses, val_ious = train_model(model, train_loader, val_loader, device, num_epochs)
 
 # Sačuvaj model
@@ -106,7 +106,7 @@ plot_metrics(train_losses, val_losses, val_ious, num_epochs)
 
 # --- 5. Evaluacija Modela ---
 print("\nPokrećem evaluaciju modela na test setu...")
-avg_test_iou, mae_counts, r2_counts = evaluate_model(model, test_loader, device, grain_counts_ground_truth)
+avg_test_iou, mae_counts, r2_counts = evaluate_model(model, test_loader, device, grain_counts_ground_truth, "Predicted Masks")
 
 print(f"\n--- Konačni rezultati na test setu ---")
 print(f"Prosječni IoU za segmentaciju: {avg_test_iou:.4f}")

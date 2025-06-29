@@ -1,4 +1,5 @@
 # src/train_eval.py
+import os
 
 import torch
 import torch.nn as nn
@@ -88,7 +89,7 @@ def train_model(model, train_loader, val_loader, device, num_epochs, learning_ra
     return train_losses, val_losses, val_ious
 
 
-def evaluate_model(model, test_loader, device, grain_counts_ground_truth):
+def evaluate_model(model, test_loader, device, grain_counts_ground_truth, output_masks_dir = True):
     """
     Evaluira model na test setu i računa metriku brojanja zrna.
 
@@ -100,11 +101,16 @@ def evaluate_model(model, test_loader, device, grain_counts_ground_truth):
 
     Returns:
         tuple: Prosječni IoU, MAE za brojanje zrna, R2 za brojanje zrna.
+        :param output_masks_dir:
     """
     model.eval()  # Postavi model u evaluacioni mod
     test_iou_scores = []
     all_true_counts = []
     all_predicted_counts = []
+
+    if output_masks_dir:
+        os.makedirs(output_masks_dir, exist_ok=True)
+        print(f"Predviđene maske će biti spremljene u: {output_masks_dir}")
 
     print("\nEvaluacija na test setu...")
     with torch.no_grad():
@@ -130,6 +136,10 @@ def evaluate_model(model, test_loader, device, grain_counts_ground_truth):
                 # Masks su već 0.0 ili 1.0 float, pretvori u uint8 za OpenCV (0 ili 255)
                 true_mask_np = (masks[i, 0, :, :].cpu().numpy() * 255).astype(np.uint8)
                 predicted_mask_np = (predicted_masks_binary[i, 0, :, :].cpu().numpy() * 255).astype(np.uint8)
+
+                if output_masks_dir:
+                    save_path = os.path.join(output_masks_dir, f"{img_name_without_ext}_predicted_mask.png")
+                    cv2.imwrite(save_path, predicted_mask_np)
 
                 # Broj povezanih komponenti (zrno) na STVARNOJ masci
                 # cv2.connectedComponents vraća broj labela, uključujući pozadinu (labela 0)

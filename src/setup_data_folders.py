@@ -3,12 +3,12 @@ import shutil
 import pandas as pd
 import random
 
-ORIGINAL_IMAGES_FOLDER = "../Images"
-BINARY_MASKS_FOLDER = "../Binary Masks"
-GRAIN_COUNT_CSV = "../grain_counts.csv"
+ORIGINAL_IMAGES_FOLDER = "Images"
+BINARY_MASKS_FOLDER = "Binary Masks"
+GRAIN_COUNT_CSV = "grain_counts.csv"
 
 # --- Putanje za organizaciju podataka (ovo će se generirati) ---
-DATASET_SPLIT_BASE = "../dataset_split_for_dinov2"
+DATASET_SPLIT_BASE = "dataset_split_for_dinov2"
 TRAIN_IMAGES_DIR = os.path.join(DATASET_SPLIT_BASE, "train", "images")
 TRAIN_MASKS_DIR = os.path.join(DATASET_SPLIT_BASE, "train", "masks")
 VAL_IMAGES_DIR = os.path.join(DATASET_SPLIT_BASE, "val", "images")
