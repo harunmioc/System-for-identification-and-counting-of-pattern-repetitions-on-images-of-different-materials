@@ -43,11 +43,11 @@ The system follows a **two-stage modular pipeline**:
 
 ##  Demo
 
-| Input Image | Predicted Mask | Estimated Count |
-|-------------|----------------|-----------------|
-| ![img1](Images/A_01_01.png) | ![mask1](Binary_Masks/A_01_01.png) | 87 |
-| ![img2](demo/input2.png) | ![mask2](demo/mask2.png) | 132 |
-| ![img3](demo/input3.png) | ![mask3](demo/mask3.png) | 101 |
+| Input Image | Predicted Mask |
+|-------------|----------------|
+| ![img1](Images/A_01_01.png) | ![mask1](Binary%20Masks/A_01_01_seg.png) |
+| ![img2](Images/14.bmp) | ![mask2](Binary%20Masks/14_seg.png) |
+| ![img3](Images/G_03_04.png) | ![mask3](Binary%20Masks/G_03_04_seg.png) |
 
 ---
 
