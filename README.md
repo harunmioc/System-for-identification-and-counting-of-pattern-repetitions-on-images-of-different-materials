@@ -125,7 +125,7 @@ Compared to traditional CNN or SEraMic pipelines:
 In the `checkpoints` folder there is also the **finally trained model** that we used for segmentation and grain counting (based on the DINOv2 architecture).
 You can directly use this model for evaluation and further experimentation.
 
-- `checkpoints/dinov2_final.pth` — final model weight
+- `checkpoints/final_segmentation_model.pth` — final model weight
 
 ---
 
