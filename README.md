@@ -59,7 +59,7 @@ Two datasets were used:
 
 ---
 
-## 📓 Additional Notebook: `Computer Vision Grain Segmentation.ipynb`
+##  Additional Notebook: `Computer Vision Grain Segmentation.ipynb`
 
 This notebook contains the **complete preprocessing workflow** for preparing the internal microscopic image dataset. It focuses on generating **pseudo ground truth masks** for segmentation and counting tasks. The images originally had no annotations.
 
