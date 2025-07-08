@@ -41,11 +41,47 @@ The system follows a **two-stage modular pipeline**:
 
 ---
 
+##  Demo
+
+| Input Image | Predicted Mask |
+|-------------|----------------|
+| ![img1](Images/A_01_01.png) | ![mask1](Binary%20Masks/A_01_01_seg.png) |
+| ![img2](Images/14.bmp) | ![mask2](Binary%20Masks/14_seg.png) |
+| ![img3](Images/G_03_04.png) | ![mask3](Binary%20Masks/G_03_04_seg.png) |
+
+---
+
 ##  Datasets
 
 Two datasets were used:
 - **Internal dataset**: 22 high-res images (BMP), magnifications: x100, x250, x500
 - **Public Kaggle dataset**: 315 labeled images (PNG), stainless steel microstructure at x500 magnification
+
+---
+
+## 📓 Additional Notebook: `Computer Vision Grain Segmentation.ipynb`
+
+This notebook contains the **complete preprocessing workflow** for preparing the internal microscopic image dataset. It focuses on generating **pseudo ground truth masks** for segmentation and counting tasks. The images originally had no annotations.
+
+### Key steps performed in the notebook:
+
+- Loading and visual inspection of high-resolution `.bmp` images  
+- Applying **CLAHE** (Contrast Limited Adaptive Histogram Equalization) to enhance local contrast  
+- Smoothing with **Gaussian blur** to reduce noise  
+- **Otsu thresholding** for automatic binarization  
+- **Morphological operations** (closing, dilation, opening) to refine and clean the binary masks  
+- Removing small connected components (noise) based on area threshold  
+- Generating final **binary masks** used as pseudo labels for training and evaluation  
+- Saving the masks to disk for later use in model training
+
+### Purpose of the notebook:
+
+- Build a reproducible pipeline for working with unlabeled, internal datasets  
+- Generate consistent and usable pseudo ground truth for segmentation models  
+- Serve as an explainable preprocessing baseline for future experiments
+
+This notebook is a critical step in enabling the model to learn without manually annotated masks.
+
 
 ### Preprocessing Steps:
 - CLAHE (contrast enhancement)
@@ -77,19 +113,21 @@ The system demonstrates strong performance with minimal training data and high g
 - **Freezes backbone** — only decoder is trained → faster, simpler training.
 
 Compared to traditional CNN or SEraMic pipelines:
- Fewer dependencies  
- Fully automated  
- Better scalability
+
+- Fewer dependencies  
+- Fully automated  
+- Better scalability
 
 ---
 
 ## Checkpoints
 
-U folderu `checkpoints` se nalazi i **finalno istrenirani model** koji smo koristili za segmentaciju i brojanje zrna (baziran na DINOv2 arhitekturi).  
-Ovaj model možeš direktno koristiti za evaluaciju i dalje eksperimentisanje.
+In the `checkpoints` folder there is also the **finally trained model** that we used for segmentation and grain counting (based on the DINOv2 architecture).
+You can directly use this model for evaluation and further experimentation.
 
-- `checkpoints/dinov2_final.pth` — finalna težina modela
+- `checkpoints/final_segmentation_model.pth` — final model weight
 
+---
 
 ##  Model Flow
 
@@ -102,3 +140,15 @@ D --> E[Connected Components]
 E --> F[Grain Count Output]
 ```
 ---
+
+## Requirements
+
+- Python 3.10+
+- PyTorch 2.0+
+- OpenCV
+- NumPy
+- Matplotlib
+- Scikit-learn
+- Torchvision
+- `timm` (for DINOv2 backbone)
+
