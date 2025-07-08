@@ -122,10 +122,10 @@ Compared to traditional CNN or SEraMic pipelines:
 
 ## Checkpoints
 
-U folderu `checkpoints` se nalazi i **finalno istrenirani model** koji smo koristili za segmentaciju i brojanje zrna (baziran na DINOv2 arhitekturi).  
-Ovaj model možeš direktno koristiti za evaluaciju i dalje eksperimentisanje.
+In the `checkpoints` folder there is also the **finally trained model** that we used for segmentation and grain counting (based on the DINOv2 architecture).
+You can directly use this model for evaluation and further experimentation.
 
-- `checkpoints/dinov2_final.pth` — finalna težina modela
+- `checkpoints/dinov2_final.pth` — final model weight
 
 ---
 
