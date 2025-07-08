@@ -38,9 +38,6 @@ The system follows a **two-stage modular pipeline**:
    - Post-processing with OpenCV’s `connectedComponents` to count individual grains.
    - Evaluation with pseudo ground truth and metrics.
 
-<p align="center">
-  <img src="INSERT_YOUR_ARCHITECTURE_DIAGRAM_IMAGE_LINK_HERE" width="650">
-</p>
 
 ---
 
@@ -85,6 +82,14 @@ Compared to traditional CNN or SEraMic pipelines:
  Better scalability
 
 ---
+
+## Checkpoints
+
+U folderu `checkpoints` se nalazi i **finalno istrenirani model** koji smo koristili za segmentaciju i brojanje zrna (baziran na DINOv2 arhitekturi).  
+Ovaj model možeš direktno koristiti za evaluaciju i dalje eksperimentisanje.
+
+- `checkpoints/dinov2_final.pth` — finalna težina modela
+
 
 ##  Model Flow
 
