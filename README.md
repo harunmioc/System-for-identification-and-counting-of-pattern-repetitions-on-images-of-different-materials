@@ -152,3 +152,35 @@ E --> F[Grain Count Output]
 - Torchvision
 - `timm` (for DINOv2 backbone)
 
+---
+
+---
+
+##  Authors
+
+This project was developed as part of a course assignment in **Artificial Intelligence**  
+Faculty of Electrical Engineering, University of Sarajevo
+Academic Year: 2024/2025
+
+### Contributors:
+- **Harun Mioč** – model development, pipeline integration, segmentation logic, preprocessing 
+- **Ahmed Softić** – dataset collection, preprocessing, evaluation  
+- **Tarik Čaluk** – notebook demos, dataset collection, metric analysis  
+
+ Repository maintained by: [Harun Mioč](https://github.com/harunmioc)  
+ harun.mioc@gmail.com
+
+---
+
+##  License
+
+This project is licensed under the **MIT License**.  
+You are free to use, modify, and distribute this code with proper attribution.  
+For more details, see the [`LICENSE`](LICENSE) file.
+
+---
+###  Credits
+
+This project uses the DINOv2 backbone developed by Meta AI.  
+We also thank contributors to OpenCV and PyTorch communities.
+
