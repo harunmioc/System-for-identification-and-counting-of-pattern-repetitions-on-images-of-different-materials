@@ -38,9 +38,16 @@ The system follows a **two-stage modular pipeline**:
    - Post-processing with OpenCV’s `connectedComponents` to count individual grains.
    - Evaluation with pseudo ground truth and metrics.
 
-<p align="center">
-  <img src="INSERT_YOUR_ARCHITECTURE_DIAGRAM_IMAGE_LINK_HERE" width="650">
-</p>
+
+---
+
+##  Demo
+
+| Input Image | Predicted Mask | Estimated Count |
+|-------------|----------------|-----------------|
+| ![img1](Images/A_01_01.png) | ![mask1](Binary_Masks/A_01_01.png) | 87 |
+| ![img2](demo/input2.png) | ![mask2](demo/mask2.png) | 132 |
+| ![img3](demo/input3.png) | ![mask3](demo/mask3.png) | 101 |
 
 ---
 
@@ -49,6 +56,32 @@ The system follows a **two-stage modular pipeline**:
 Two datasets were used:
 - **Internal dataset**: 22 high-res images (BMP), magnifications: x100, x250, x500
 - **Public Kaggle dataset**: 315 labeled images (PNG), stainless steel microstructure at x500 magnification
+
+---
+
+## 📓 Additional Notebook: `Computer Vision Grain Segmentation.ipynb`
+
+This notebook contains the **complete preprocessing workflow** for preparing the internal microscopic image dataset. It focuses on generating **pseudo ground truth masks** for segmentation and counting tasks. The images originally had no annotations.
+
+### Key steps performed in the notebook:
+
+- Loading and visual inspection of high-resolution `.bmp` images  
+- Applying **CLAHE** (Contrast Limited Adaptive Histogram Equalization) to enhance local contrast  
+- Smoothing with **Gaussian blur** to reduce noise  
+- **Otsu thresholding** for automatic binarization  
+- **Morphological operations** (closing, dilation, opening) to refine and clean the binary masks  
+- Removing small connected components (noise) based on area threshold  
+- Generating final **binary masks** used as pseudo labels for training and evaluation  
+- Saving the masks to disk for later use in model training
+
+### Purpose of the notebook:
+
+- Build a reproducible pipeline for working with unlabeled, internal datasets  
+- Generate consistent and usable pseudo ground truth for segmentation models  
+- Serve as an explainable preprocessing baseline for future experiments
+
+This notebook is a critical step in enabling the model to learn without manually annotated masks.
+
 
 ### Preprocessing Steps:
 - CLAHE (contrast enhancement)
@@ -80,9 +113,10 @@ The system demonstrates strong performance with minimal training data and high g
 - **Freezes backbone** — only decoder is trained → faster, simpler training.
 
 Compared to traditional CNN or SEraMic pipelines:
- Fewer dependencies  
- Fully automated  
- Better scalability
+
+- Fewer dependencies  
+- Fully automated  
+- Better scalability
 
 ---
 
@@ -97,3 +131,15 @@ D --> E[Connected Components]
 E --> F[Grain Count Output]
 ```
 ---
+
+## Requirements
+
+- Python 3.10+
+- PyTorch 2.0+
+- OpenCV
+- NumPy
+- Matplotlib
+- Scikit-learn
+- Torchvision
+- `timm` (for DINOv2 backbone)
+
