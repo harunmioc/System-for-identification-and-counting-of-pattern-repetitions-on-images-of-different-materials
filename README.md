@@ -163,9 +163,9 @@ Faculty of Electrical Engineering, University of Sarajevo
 Academic Year: 2024/2025
 
 ### Contributors:
-- **Harun Mioč** – model development, pipeline integration, segmentation logic, preprocessing 
-- **Ahmed Softić** – dataset collection, preprocessing, evaluation  
-- **Tarik Čaluk** – notebook demos, dataset collection, metric analysis  
+- [Harun Mioč](https://github.com/harunmioc) – model development, pipeline integration, segmentation logic, preprocessing 
+- [Ahmed Softić](https://github.com/soft1c) – dataset collection, preprocessing, evaluation  
+- [Tarik Čaluk](https://github.com/tarikcalukk) – notebook demos, dataset collection, metric analysis  
 
  Repository maintained by: [Harun Mioč](https://github.com/harunmioc)  
  harun.mioc@gmail.com
